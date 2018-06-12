@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Meta Conductor
- * Version: 1.0
+ * Plugin Name: Metatag Builder
+ * Version: 1.1
  * Description: render meta data on wp header.
  * Author: CINRA Inc,.
  * Author URI: https://www.cinra.co.jp
@@ -108,7 +108,7 @@ class MetatagBuilder
 }
 
 add_action( 'wp', array( 'MetatagBuilder', 'init' ) );
-if ( METAtag_builder_AUTO_RENDER ) add_action( 'wp_head', array('MetatagBuilder', 'render') );
+if ( METATAG_BUILDER_AUTO_RENDER ) add_action( 'wp_head', array('MetatagBuilder', 'render') );
 
 /**
  * set_meta_data()
