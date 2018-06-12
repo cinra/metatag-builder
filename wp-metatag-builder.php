@@ -10,16 +10,16 @@
  * @package CINRA Wordpress Package
  */
 
-if (!defined( 'META_CONDUCTOR_AUTO_RENDER' )) define( 'META_CONDUCTOR_AUTO_RENDER', true );
+if (!defined( 'METATAG_BUILDER_AUTO_RENDER' )) define( 'METATAG_BUILDER_AUTO_RENDER', true );
 
-class MetaConductor
+class MetatagBuilder
 {
 
   private static $vals = [];
 
   public static function init()
   {
-    do_action( 'meta_conductor_init' );
+    do_action( 'metatag_builder_init' );
   }
 
   /**
@@ -97,7 +97,7 @@ class MetaConductor
         );
       }
     }
-    return apply_filters( 'meta_conductor_compose', $html);
+    return apply_filters( 'metatag_builder_compose', $html);
   }
 
   public static function render()
@@ -107,8 +107,8 @@ class MetaConductor
 
 }
 
-add_action( 'wp', array( 'MetaConductor', 'init' ) );
-if ( META_CONDUCTOR_AUTO_RENDER ) add_action( 'wp_head', array('MetaConductor', 'render') );
+add_action( 'wp', array( 'MetatagBuilder', 'init' ) );
+if ( METAtag_builder_AUTO_RENDER ) add_action( 'wp_head', array('MetatagBuilder', 'render') );
 
 /**
  * set_meta_data()
@@ -123,7 +123,7 @@ if ( META_CONDUCTOR_AUTO_RENDER ) add_action( 'wp_head', array('MetaConductor', 
  */
 function set_meta_data($key, $content = null, $key_attr = 'name', $content_attr = 'content', $tagname = 'meta', $ignore_sanitize = false )
 {
-  MetaConductor::set( $key, $content, $key_attr, $content_attr, $tagname, $ignore_sanitize );
+  MetatagBuilder::set( $key, $content, $key_attr, $content_attr, $tagname, $ignore_sanitize );
 }
 
 /**
@@ -133,7 +133,7 @@ function set_meta_data($key, $content = null, $key_attr = 'name', $content_attr 
  */
 function set_meta_descriptions( $raw_content )
 {
-  $content = MetaConductor::sanitize($raw_content, 240);
+  $content = MetatagBuilder::sanitize($raw_content, 240);
   set_meta_data( 'description', $content );
   set_meta_data( 'og:description', $content, 'property' );
   set_meta_data( 'twitter:description', $content );
