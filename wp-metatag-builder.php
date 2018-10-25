@@ -128,7 +128,7 @@ function set_meta_data($key, $content = null, $key_attr = 'name', $content_attr 
 
 /**
  * set_meta_descriptions()
- * meta description、og:description、twitter:description同時に設定できるヘルパーメソッド。長い文章も240文字で自動的に省略。自動サニタイズ
+ * meta description、og:description、twitter:description同時に設定できるヘルパーメソッド。長い文章も自動的に省略する（標準240文字）。自動サニタイズ
  * @param string $raw_content 文言
  */
 function set_meta_descriptions( $raw_content, $limit = 240 )
