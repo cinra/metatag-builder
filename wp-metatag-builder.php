@@ -131,9 +131,9 @@ function set_meta_data($key, $content = null, $key_attr = 'name', $content_attr 
  * meta description、og:description、twitter:description同時に設定できるヘルパーメソッド。長い文章も240文字で自動的に省略。自動サニタイズ
  * @param string $raw_content 文言
  */
-function set_meta_descriptions( $raw_content )
+function set_meta_descriptions( $raw_content, $limit = 240 )
 {
-  $content = MetatagBuilder::sanitize($raw_content, 240);
+  $content = MetatagBuilder::sanitize($raw_content, $limit);
   set_meta_data( 'description', $content );
   set_meta_data( 'og:description', $content, 'property' );
   set_meta_data( 'twitter:description', $content );
