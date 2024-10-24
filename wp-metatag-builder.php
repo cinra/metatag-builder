@@ -108,7 +108,7 @@ class MetatagBuilder
 }
 
 add_action( 'wp', array( 'MetatagBuilder', 'init' ) );
-if ( METATAG_BUILDER_AUTO_RENDER ) add_action( 'wp_head', array('MetatagBuilder', 'render') );
+if ( METATAG_BUILDER_AUTO_RENDER ) add_action( 'wp_head', array('MetatagBuilder', 'render'), 7 );
 
 /**
  * set_meta_data()

@@ -48,16 +48,11 @@ get_header();
 <meta property="og:title" content="記事のタイトル">
 ```
 
-#### render_meta_data()
-
-- セットしてあるメタタグが出力されます
-- `wp_head()`で自動的に出力されるので、通常は明示的に実行する必要なし
-
 ### モデル／クラス
 
-#### MetaConductor
+#### MetatagBuilder
 
-##### MetaConductor::set( $key, $content, $key_attr, $content_attr, $tagname )
+##### MetatagBuilder::set( $key, $content, $key_attr, $content_attr, $tagname )
 
 - メタタグの値を設定します。$keyに配列を指定すると、複数の値を一気に設定可能です
 
@@ -69,7 +64,7 @@ get_header();
 |$content_attr|Mata Contentを変更する|`content`|
 |$tagname|タグ名を変更する|`meta`|
 
-##### MetaConductor::get( $key, $default )
+##### MetatagBuilder::get( $key, $default )
 
 - メタタグの値を取得します
 
@@ -78,27 +73,27 @@ get_header();
 |$key|Meta Nameの値||
 |$default|値が空だった場合に返すデフォルト値||
 
-##### MetaConductor::conduct()
+##### MetatagBuilder::conduct()
 
 - 設定されたメタタグをHTMLとして返します
 
-##### MetaConductor::render()
+##### MetatagBuilder::render()
 
 - 設定されたメタタグを出力します
 
 ### フィルターフック
 
-#### meta_conductor_init
+#### metatag_builder_init
 
 - `MetaConductor`を初期化した時に通すフィルターフック
 - `$wp_query->meta_conductor`を引数として渡すので、その場でメタタグをセットできる
 
-#### meta_conductor_conduct
+#### metatag_builder_compose
 
-- **MetaConductor::conduct()**実行時に生成されたHTMLを通すフィルターフック
+- `MetatagBuilder::conduct()` 実行時に生成されたHTMLを通すフィルターフック
 
 ### 定数
 
-#### META_CONDUCTOR_AUTO_RENDER
+#### METATAG_BUILDER_AUTO_RENDER
 
 - `true`をセットすると、`wp_head()`で自動的にメタタグが出力されます。デフォルトは`true`
